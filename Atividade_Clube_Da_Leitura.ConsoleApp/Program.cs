@@ -35,48 +35,51 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                 {
                     case "1":
                         CadastrarAmigo(amigosCadastrados, ref indiceAmigo);
-                        Console.Clear();
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
 
                         break;
 
                     case "2":
                         CadastrarRevista(caixasCadastratas, revistaCadastrados, ref indiceRevista);
-                        Console.Clear();
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
                         break;
 
                     case "3":
                         CadastrarCaixa(caixasCadastratas, ref indiceCaixa);
-                        Console.Clear();
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
                         break;
 
                     case "4":
                         VisualizarTodosEmprestimos(emprestimosRealizados);
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
                         break;
 
                     case "5":
                         VisualizarEmprestimoDoMes(emprestimosRealizados);
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
                         break;
 
                     case "6":
                         VisualizarEmprestimosEmAberto(emprestimosRealizados);
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
                         break;
 
                     case "7":
                         Emprestar(ref amigosCadastrados, ref revistaCadastrados, ref emprestimosRealizados, ref indiceEmprestimo);
-                        //Console.Clear();
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
                         break;
 
                     case "8":
                         FinalizarEmprestimo(ref emprestimosRealizados, ref novoEmprestimosRealizados);
-                        Console.Clear();
                         opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
                         break;
 
                     default:
@@ -90,6 +93,16 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
         }
 
         #region metodos
+
+        public static void Mensagem(string mensagem, ConsoleColor cor)
+        {
+            Console.ForegroundColor = cor;
+            Console.WriteLine();
+            Console.WriteLine(mensagem);
+            Console.ResetColor();
+            Console.WriteLine();
+        }
+
         public static void FinalizarEmprestimo(ref Emprestimo[] emprestimosRealizados, ref Emprestimo[] novoEmprestimosRealizados)
         {
             Console.Write("Digite o nome do amigo que está devolvendo a revista: ");
@@ -109,6 +122,8 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
             }
 
             emprestimosRealizados = novoEmprestimosRealizados;
+
+            Mensagem("Empréstimo finalizado!", ConsoleColor.Green);
         }
 
         public static string MenuPrincipal()
@@ -159,9 +174,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                 if (emprestimosRealizados[k] != null && emprestimosRealizados[k].amigo.nome == nomeEmprestimo)
                 {
                     continuarAmigo = false;
-                    Console.WriteLine();
-                    Console.WriteLine("Um amigo só pode pegar um livro emprestado por vez!");
-                    Console.WriteLine();
+                    Mensagem("Um amigo só pode pegar um livro emprestado por vez!", ConsoleColor.Red);
                 }
             }
 
@@ -219,9 +232,10 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
                 } while (eValida01 == false);
 
-                Console.WriteLine();
                 emprestimosRealizados[indiceEmprestimo] = emprestimo;
                 indiceEmprestimo++;
+
+                Mensagem("Empréstimo cadastrado!", ConsoleColor.Green);
 
                 break;
             }
@@ -400,6 +414,8 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             caixasCadastratas[indiceCaixa] = caixa;
             indiceCaixa++;
+
+            Mensagem("Caixa cadastrada!", ConsoleColor.Green);
         }
 
         private static void CadastrarRevista(Caixa[] caixasCadastratas, Revista[] revistaCadastrados, ref int indiceRevista)
@@ -462,6 +478,8 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             revistaCadastrados[indiceRevista] = revista;
             indiceRevista++;
+
+            Mensagem("Revista cadastrada!", ConsoleColor.Green);
         }
 
         private static void CadastrarAmigo(Amigo[] amigosCadastrados, ref int indiceAmigo)
@@ -506,6 +524,8 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             amigosCadastrados[indiceAmigo] = amigo;
             indiceAmigo++;
+
+            Mensagem("Amigo cadastrado!", ConsoleColor.Green);
         }
         #endregion
     }
