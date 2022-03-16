@@ -10,9 +10,11 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
             #region variaveis
             Caixa[] caixasCadastratas = new Caixa[100];
             Amigo[] amigosCadastrados = new Amigo[100];
-            Revista[] revistaCadastrados = new Revista[100];    
+            Amigo[] novoAmigosCadastrados = new Amigo[100];
+            Revista[] revistasCadastradas = new Revista[100];
+            Revista[] novoRevistasCadastradas = new Revista[100];
             Emprestimo[] emprestimosRealizados = new Emprestimo[100];
-            Emprestimo[] novoEmprestimosRealizados = new Emprestimo[100];
+            Emprestimo[] novoEmprestimosRealizados = new Emprestimo[100]; 
 
             string opcaoMenuPrincipal;
             int indiceAmigo = 0;
@@ -26,7 +28,9 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                 opcaoMenuPrincipal = MenuPrincipal();
 
             } while (opcaoMenuPrincipal != "1" && opcaoMenuPrincipal != "2" && opcaoMenuPrincipal != "3" && opcaoMenuPrincipal != "4"
-            && opcaoMenuPrincipal != "5" && opcaoMenuPrincipal != "6" && opcaoMenuPrincipal != "7" && opcaoMenuPrincipal != "8");
+            && opcaoMenuPrincipal != "5" && opcaoMenuPrincipal != "6" && opcaoMenuPrincipal != "7" && opcaoMenuPrincipal != "8"
+            && opcaoMenuPrincipal != "9" && opcaoMenuPrincipal != "10" && opcaoMenuPrincipal != "11" && opcaoMenuPrincipal != "12"
+            && opcaoMenuPrincipal != "13" && opcaoMenuPrincipal != "14");
 
 
             do
@@ -41,7 +45,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                         break;
 
                     case "2":
-                        CadastrarRevista(caixasCadastratas, revistaCadastrados, ref indiceRevista);
+                        CadastrarRevista(caixasCadastratas, revistasCadastradas, ref indiceRevista);
                         opcaoMenuPrincipal = MenuPrincipal();
                         Console.Clear();
                         break;
@@ -71,13 +75,49 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                         break;
 
                     case "7":
-                        Emprestar(ref amigosCadastrados, ref revistaCadastrados, ref emprestimosRealizados, ref indiceEmprestimo);
+                        Emprestar(ref amigosCadastrados, ref revistasCadastradas, ref emprestimosRealizados, ref indiceEmprestimo);
                         opcaoMenuPrincipal = MenuPrincipal();
                         Console.Clear();
                         break;
 
                     case "8":
                         FinalizarEmprestimo(ref emprestimosRealizados, ref novoEmprestimosRealizados);
+                        opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
+                        break;
+
+                    case "9":
+                        EditarAmigo(ref amigosCadastrados);
+                        opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
+                        break;
+
+                    case "10":
+                        EditarRevista(ref revistasCadastradas, ref caixasCadastratas);
+                        opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
+                        break;
+
+                    case "11":
+                        ExcluirAmigo(ref amigosCadastrados, ref novoAmigosCadastrados);
+                        opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
+                        break;
+
+                    case "12":
+                        ExcluirRevista(ref revistasCadastradas, ref novoRevistasCadastradas);
+                        opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
+                        break;
+
+                    case "13":
+                        VisualizarAmigos(ref amigosCadastrados);
+                        opcaoMenuPrincipal = MenuPrincipal();
+                        Console.Clear();
+                        break;
+
+                    case "14":
+                        VisualizarRevistas(ref revistasCadastradas);
                         opcaoMenuPrincipal = MenuPrincipal();
                         Console.Clear();
                         break;
@@ -93,6 +133,156 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
         }
 
         #region metodos
+        public static void VisualizarAmigos(ref Amigo[] amigosCadastrados)
+        {
+            Mensagem("Amigos cadastrados: ", ConsoleColor.Yellow);
+
+            for (int i = 0; i < amigosCadastrados.Length; i++)
+            {
+                if (amigosCadastrados[i] != null)
+                {
+                    Console.WriteLine("Nome do amigo: " + amigosCadastrados[i].nome);
+                    Console.WriteLine("Nome do responsável: " + amigosCadastrados[i].nomeResponsavel);
+                    Console.WriteLine("Telefone do amigo: " + amigosCadastrados[i].telefone);
+                    Console.WriteLine("Endereço do amigo: " + amigosCadastrados[i].endereço);
+
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        public static void VisualizarRevistas(ref Revista[] revistasCadastradas)
+        {
+            Mensagem("Revistas cadastradas: ", ConsoleColor.Yellow);
+
+            for (int i = 0; i < revistasCadastradas.Length; i++)
+            {
+                if (revistasCadastradas[i] != null)
+                {
+                    Console.WriteLine("Id da revista: " + revistasCadastradas[i].id);
+                    Console.WriteLine("Tipo da coleção: " + revistasCadastradas[i].tipoColecao);
+                    Console.WriteLine("Edição: " + revistasCadastradas[i].numeroEdicao);
+                    Console.WriteLine("Ano: " + revistasCadastradas[i].ano);
+                    Console.WriteLine("Caixa: " + revistasCadastradas[i].caixa.numero);
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        public static void EditarAmigo (ref Amigo[] amigosCadastrados)
+        {
+            Console.Write("Digite o nome do amigo que será editado no cadastro: ");
+            string amigoEditado = Console.ReadLine();
+
+            int posArrayEditada = 0;
+
+            for (int i = 0; i < amigosCadastrados.Length; i++)
+            {
+                if (amigosCadastrados[i] != null && amigosCadastrados[i].nome == amigoEditado)
+                {
+                    posArrayEditada = i;
+                }
+            }
+
+            Console.Write("Digite o novo nome do responsável: ");
+            amigosCadastrados[posArrayEditada].nomeResponsavel = Console.ReadLine();
+
+            Console.Write("Digite o novo telefone do amigo: ");
+            amigosCadastrados[posArrayEditada].telefone = Console.ReadLine();
+
+            Console.Write("Digite o novo endereço do amigo: ");
+            amigosCadastrados[posArrayEditada].endereço = Console.ReadLine();
+
+            Mensagem("Cadastro do amigo editado!", ConsoleColor.Green);
+
+        }
+
+        public static void EditarRevista (ref Revista[] revistasCadastradas, ref Caixa[] caixasCadastradas)
+        {
+            Console.Write("Digite o id da revista que será editada no cadastro: ");
+            string idRevistaEditado = Console.ReadLine();
+
+            int posArrayEditada = 0;
+
+            for (int i = 0; i < revistasCadastradas.Length; i++)
+            {
+                if (revistasCadastradas[i] != null && revistasCadastradas[i].id == idRevistaEditado)
+                {
+                    posArrayEditada = i;
+                }
+            }
+
+            Console.Write("Digite o novo tipo da coleção da revista: ");
+            revistasCadastradas[posArrayEditada].tipoColecao = Console.ReadLine();
+
+            Console.Write("Digite o novo número da edição da revista: ");
+            revistasCadastradas[posArrayEditada].numeroEdicao = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o novo ano da revista: ");
+            revistasCadastradas[posArrayEditada].ano = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o número da nova caixa da revista: ");
+            int novaCaixaRevista = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < caixasCadastradas.Length; i++)
+            {
+                if (caixasCadastradas[i] != null && caixasCadastradas[i].numero == novaCaixaRevista)
+                {
+                    revistasCadastradas[posArrayEditada].caixa = caixasCadastradas[i];
+                }
+            }
+
+            Mensagem("Cadastro da revista editado!", ConsoleColor.Green);
+        }
+
+        public static void ExcluirAmigo(ref Amigo[] amigosCadastrados, ref Amigo[] novoAmigosCadastrados)
+        {
+            Console.Write("Digite o nome do amigo que será excluido do cadastro: ");
+            string nomeAmigoExcluido = Console.ReadLine();
+
+            int j = 0;
+
+            for (int i = 0; i < amigosCadastrados.Length; i++)
+            {
+                if (amigosCadastrados[i] != null && amigosCadastrados[i].nome != nomeAmigoExcluido)
+                {
+                    novoAmigosCadastrados[j] = amigosCadastrados[i];
+
+                    j++;
+                    //break;
+                }
+            }
+
+            amigosCadastrados = novoAmigosCadastrados;
+
+            Mensagem("Amigo excluído do cadastro!", ConsoleColor.Green);
+        }
+
+        public static void ExcluirRevista (ref Revista[] revistasCadastradas, ref Revista[] novoRevistasCadastradas)
+
+        {
+            Console.Write("Digite o id da revista que será excluida do cadastro: ");
+            string idRevistaExcluida = Console.ReadLine();
+
+            int j = 0;
+
+            for (int i = 0; i < revistasCadastradas.Length; i++)
+            {
+                if (revistasCadastradas[i] != null && revistasCadastradas[i].id != idRevistaExcluida)
+                {
+                    novoRevistasCadastradas[j] = revistasCadastradas[i];
+
+                    j++;
+                    //break;
+                }
+            }
+
+            revistasCadastradas = novoRevistasCadastradas;
+
+            Mensagem("Revista excluída do cadastro!", ConsoleColor.Green);
+        }
 
         public static void Mensagem(string mensagem, ConsoleColor cor)
         {
@@ -117,7 +307,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                     novoEmprestimosRealizados[j] = emprestimosRealizados[i];
 
                     j++;
-                    break;
+                    //break;
                 }
             }
 
@@ -133,7 +323,9 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
             Console.WriteLine();
             Console.ResetColor();
             Console.WriteLine("1- Cadastrar amigo\n2- Cadastrar revista\n3- Cadastrar caixa\n4- Visualizar todos os empréstimos\n" +
-                "5- Visualizar empréstimos do mês\n6- Visualizar empréstimos em aberto\n7- Emprestar revista\n8- Finalzar empréstimo\nOu digite qualquer outra tecla para SAIR");
+                "5- Visualizar empréstimos do mês\n6- Visualizar empréstimos em aberto\n7- Emprestar revista\n8- Finalzar empréstimo\n" +
+                "9- Editar cadastro de amigo\n10- Editar cadastro de revista\n11-Excluir cadastro de amigo\n12- Excluir cadastro de revista" +
+                "\n13- Visualizar amigos cadastrados\n14- Visualizar revistas cadastradas\nOU PRESSIONE QUALQUER OUTRA TECLA PARA SAIR");
             Console.WriteLine();
             Console.Write("Digite a opção: ");
             string opcao = Console.ReadLine();
