@@ -9,6 +9,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
             public string nomeResponsavel;
             public string telefone;
             public string endereço;
+            public bool temMulta;
 
         }
 

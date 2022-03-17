@@ -8,7 +8,9 @@
             public string tipoColecao;
             public int numeroEdicao;
             public int ano;
+            public bool estaReservada;
             public Caixa caixa;
+            public Categoria categoria;
         }
 
     }
