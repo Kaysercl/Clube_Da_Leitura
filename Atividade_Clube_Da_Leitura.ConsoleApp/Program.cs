@@ -173,16 +173,25 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
         public static void EditarAmigo (ref Amigo[] amigosCadastrados)
         {
-            Console.Write("Digite o nome do amigo que será editado no cadastro: ");
-            string amigoEditado = Console.ReadLine();
 
+            bool existeAmigo = false;
+            string nomeAmigoEditado = null;
             int posArrayEditada = 0;
 
-            for (int i = 0; i < amigosCadastrados.Length; i++)
+            //verificação pelo nome se o amigo digitado existe
+            while (existeAmigo == false)
             {
-                if (amigosCadastrados[i] != null && amigosCadastrados[i].nome == amigoEditado)
+                Console.Write("Digite o nome do amigo que será editado no cadastro: ");
+                nomeAmigoEditado = Console.ReadLine();
+
+                for (int i = 0; i < amigosCadastrados.Length; i++)
                 {
-                    posArrayEditada = i;
+                    if (amigosCadastrados[i] != null && nomeAmigoEditado == amigosCadastrados[i].nome)
+                    {
+                        posArrayEditada = i;
+                        existeAmigo = true;
+                        break;
+                    }
                 }
             }
 
@@ -201,16 +210,25 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
         public static void EditarRevista (ref Revista[] revistasCadastradas, ref Caixa[] caixasCadastradas)
         {
-            Console.Write("Digite o id da revista que será editada no cadastro: ");
-            string idRevistaEditado = Console.ReadLine();
 
+            bool existeRevista = false;
+            string idRevistaEditada = null;
             int posArrayEditada = 0;
 
-            for (int i = 0; i < revistasCadastradas.Length; i++)
+            //verificação pelo nome se o id digitado existe
+            while (existeRevista == false)
             {
-                if (revistasCadastradas[i] != null && revistasCadastradas[i].id == idRevistaEditado)
+                Console.Write("Digite o id da revista que será editada no cadastro: ");
+                idRevistaEditada = Console.ReadLine();
+
+                for (int i = 0; i < revistasCadastradas.Length; i++)
                 {
-                    posArrayEditada = i;
+                    if (revistasCadastradas[i] != null && idRevistaEditada == revistasCadastradas[i].id)
+                    {
+                        posArrayEditada = i;
+                        existeRevista = true;
+                        break;
+                    }
                 }
             }
 
@@ -239,8 +257,25 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
         public static void ExcluirAmigo(ref Amigo[] amigosCadastrados, ref Amigo[] novoAmigosCadastrados)
         {
-            Console.Write("Digite o nome do amigo que será excluido do cadastro: ");
-            string nomeAmigoExcluido = Console.ReadLine();
+
+            bool existeAmigo = false;
+            string nomeAmigoExcluido = null;
+
+            //verificação pelo nome se o amigo digitado existe
+            while (existeAmigo == false)
+            {
+                Console.Write("Digite o nome do amigo que será excluído do cadastro: ");
+                nomeAmigoExcluido = Console.ReadLine();
+
+                for (int i = 0; i < amigosCadastrados.Length; i++)
+                {
+                    if (amigosCadastrados[i] != null && nomeAmigoExcluido == amigosCadastrados[i].nome)
+                    {
+                        existeAmigo = true;
+                        break;
+                    }
+                }
+            }
 
             int j = 0;
 
@@ -261,10 +296,25 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
         }
 
         public static void ExcluirRevista (ref Revista[] revistasCadastradas, ref Revista[] novoRevistasCadastradas)
-
         {
-            Console.Write("Digite o id da revista que será excluida do cadastro: ");
-            string idRevistaExcluida = Console.ReadLine();
+            bool existeRevista = false;
+            string idRevistaExcluida = null;
+
+            //verificação pelo nome se o id digitado existe
+            while (existeRevista == false)
+            {
+                Console.Write("Digite o id da revista que será excluída do cadastro: ");
+                idRevistaExcluida = Console.ReadLine();
+
+                for (int i = 0; i < revistasCadastradas.Length; i++)
+                {
+                    if (revistasCadastradas[i] != null && idRevistaExcluida == revistasCadastradas[i].id)
+                    {
+                        existeRevista = true;
+                        break;
+                    }
+                }
+            }
 
             int j = 0;
 
