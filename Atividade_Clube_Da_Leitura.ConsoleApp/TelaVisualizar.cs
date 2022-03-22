@@ -7,7 +7,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
         {
             public static void VisualizarAmigos(ref Amigo[] amigosCadastrados)
             {
-                TelaFerramentas.Mensagem("Amigos cadastrados: ", ConsoleColor.Yellow);
+                GerenciadorDeFerramentas.Mensagem("Amigos cadastrados: ", ConsoleColor.Yellow);
 
                 for (int i = 0; i < amigosCadastrados.Length; i++)
                 {
@@ -27,7 +27,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             public static void VisualizarRevistas(ref Revista[] revistasCadastradas)
             {
-                TelaFerramentas.Mensagem("Revistas cadastradas: ", ConsoleColor.Yellow);
+                GerenciadorDeFerramentas.Mensagem("Revistas cadastradas: ", ConsoleColor.Yellow);
 
                 for (int i = 0; i < revistasCadastradas.Length; i++)
                 {
@@ -46,7 +46,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             public static void VisualizarEmprestimosEmAberto(Emprestimo[] emprestimosRealizados)
             {
-                TelaFerramentas.Mensagem("Empréstimos em aberto: ", ConsoleColor.Yellow);
+                GerenciadorDeFerramentas.Mensagem("Empréstimos em aberto: ", ConsoleColor.Yellow);
 
                 for (int i = 0; i < emprestimosRealizados.Length; i++)
                 {
@@ -121,7 +121,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             public static void VisualizarTodosEmprestimos(Emprestimo[] emprestimosRealizados)
             {
-                TelaFerramentas.Mensagem("Todos os empréstimos: ", ConsoleColor.Yellow);
+                GerenciadorDeFerramentas.Mensagem("Todos os empréstimos: ", ConsoleColor.Yellow);
 
                 for (int i = 0; i < emprestimosRealizados.Length; i++)
                 {
@@ -152,7 +152,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             public static void VisualizarAmigosQueTemMulta(Amigo[] amigosCadastrados)
             {
-                TelaFerramentas.Mensagem("Amigos que tem multa: ", ConsoleColor.Yellow);
+                GerenciadorDeFerramentas.Mensagem("Amigos que tem multa: ", ConsoleColor.Yellow);
 
                 for (int i = 0; i < amigosCadastrados.Length; i++)
                 {

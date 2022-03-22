@@ -3,7 +3,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 {
     internal partial class Program
     {
-        public class TelaFerramentas
+        public class GerenciadorDeFerramentas
         {
             public static void Mensagem(string mensagem, ConsoleColor cor)
             {

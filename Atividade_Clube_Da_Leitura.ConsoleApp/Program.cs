@@ -34,7 +34,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
             do
             {
-                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
 
             } while (opcaoMenuPrincipal != "1" && opcaoMenuPrincipal != "2" && opcaoMenuPrincipal != "3" && opcaoMenuPrincipal != "4"
             && opcaoMenuPrincipal != "5");
@@ -47,7 +47,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
                         do
                         {
-                            opcaoMenuCadastro = TelaMenu.MenuCadastro();
+                            opcaoMenuCadastro = GerenciadorDeMenu.MenuCadastro();
 
                         } while (opcaoMenuCadastro != "1" && opcaoMenuCadastro != "2" && opcaoMenuCadastro != "3"
                         && opcaoMenuCadastro != "4" && opcaoMenuCadastro != "5" && opcaoMenuCadastro != "6");
@@ -55,49 +55,49 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                         switch (opcaoMenuCadastro)
                         {
                             case "1":
-                                TelaCadastro.CadastrarAmigo(amigosCadastrados, ref indiceAmigo);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeAmigo.CadastrarAmigo(amigosCadastrados, ref indiceAmigo);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "2":
-                                TelaCadastro.CadastrarRevista(caixasCadastratas, revistasCadastradas, categoriasCadastradas, ref indiceRevista);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeRevista.CadastrarRevista(caixasCadastratas, revistasCadastradas, categoriasCadastradas, ref indiceRevista);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "3":
-                                TelaCadastro.CadastrarCaixa(caixasCadastratas, ref indiceCaixa);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeCaixa.CadastrarCaixa(caixasCadastratas, ref indiceCaixa);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "4":
-                                TelaCadastro.CadastrarEmprestimo(ref reservasCadastradas, ref amigosCadastrados, ref revistasCadastradas, ref emprestimosRealizados, ref indiceEmprestimo);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeEmprestimo.CadastrarEmprestimo(ref reservasCadastradas, ref amigosCadastrados, ref revistasCadastradas, ref emprestimosRealizados, ref indiceEmprestimo);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "5":
-                                TelaCadastro.CadastrarCategoria(revistasCadastradas, categoriasCadastradas, ref indiceCategoria);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeCategoria.CadastrarCategoria(revistasCadastradas, categoriasCadastradas, ref indiceCategoria);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "6":
-                                TelaCadastro.CadastrarReserva(reservasCadastradas, amigosCadastrados, revistasCadastradas, ref indiceReseva);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeReserva.CadastrarReserva(reservasCadastradas, amigosCadastrados, revistasCadastradas, ref indiceReseva);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             default:
-                                TelaMenu.MenuCadastro();
+                                GerenciadorDeMenu.MenuCadastro();
 
                                 break;
                         }
@@ -109,28 +109,28 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
                         do
                         {
-                            opcaoMenuEditar = TelaMenu.MenuEditar();
+                            opcaoMenuEditar = GerenciadorDeMenu.MenuEditar();
 
                         } while (opcaoMenuEditar != "1" && opcaoMenuEditar != "2");
 
                         switch (opcaoMenuEditar)
                         {
                             case "1":
-                                TelaEditar.EditarAmigo(ref amigosCadastrados);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeAmigo.EditarAmigo(ref amigosCadastrados);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "2":
-                                TelaEditar.EditarRevista(ref revistasCadastradas, ref caixasCadastratas);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeRevista.EditarRevista(ref revistasCadastradas, ref caixasCadastratas);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             default:
-                                TelaMenu.MenuEditar();
+                                GerenciadorDeMenu.MenuEditar();
 
                                 break;
                         }
@@ -142,28 +142,28 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
                         do
                         {
-                            opcaoMenuExcluir = TelaMenu.MenuExcluir();
+                            opcaoMenuExcluir = GerenciadorDeMenu.MenuExcluir();
 
                         } while (opcaoMenuExcluir != "1" && opcaoMenuExcluir != "2");
 
                         switch (opcaoMenuExcluir)
                         {
                             case "1":
-                                TelaExcluir.ExcluirAmigo(ref amigosCadastrados, ref novoAmigosCadastrados);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeAmigo.ExcluirAmigo(ref amigosCadastrados, ref novoAmigosCadastrados);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "2":
-                                TelaExcluir.ExcluirRevista(ref revistasCadastradas, ref novoRevistasCadastradas);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                GerenciadorDeRevista.ExcluirRevista(ref revistasCadastradas, ref novoRevistasCadastradas);
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             default:
-                                TelaMenu.MenuExcluir();
+                                GerenciadorDeMenu.MenuExcluir();
 
                                 break;
                         }
@@ -175,7 +175,7 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
                         do
                         {
-                            opcaoMenuVisualizar = TelaMenu.MenuVisualizar();
+                            opcaoMenuVisualizar = GerenciadorDeMenu.MenuVisualizar();
 
                         } while (opcaoMenuVisualizar != "1" && opcaoMenuVisualizar != "2" && opcaoMenuVisualizar != "3"
                         && opcaoMenuVisualizar != "4" && opcaoMenuVisualizar != "5" && opcaoMenuVisualizar != "6");
@@ -184,48 +184,48 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                         {
                             case "1":
                                 TelaVisualizar.VisualizarAmigos(ref amigosCadastrados);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "2":
                                 TelaVisualizar.VisualizarRevistas(ref revistasCadastradas);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "3":
                                 TelaVisualizar.VisualizarTodosEmprestimos(emprestimosRealizados);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "4":
                                 TelaVisualizar.VisualizarEmprestimoDoMes(emprestimosRealizados);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "5":
                                 TelaVisualizar.VisualizarEmprestimosEmAberto(emprestimosRealizados);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "6":
                                 TelaVisualizar.VisualizarAmigosQueTemMulta(amigosCadastrados);
-                                opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                                opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             default:
-                                TelaMenu.MenuVisualizar();
+                                GerenciadorDeMenu.MenuVisualizar();
 
                                 break;
                         }
@@ -235,8 +235,8 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
                     case "5":
 
-                        TelaExcluir.ExcluirEmprestimo(ref amigosCadastrados, ref emprestimosRealizados, ref novoEmprestimosRealizados);
-                        opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                        GerenciadorDeEmprestimo.ExcluirEmprestimo(ref amigosCadastrados, ref emprestimosRealizados, ref novoEmprestimosRealizados);
+                        opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                         Console.Clear();
 
                     break;
@@ -244,8 +244,8 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
 
                     case "6":
 
-                        TelaExcluir.ExcluirMulta(amigosCadastrados);
-                        opcaoMenuPrincipal = TelaMenu.MenuPrincipal();
+                        GerenciadorDeMulta.ExcluirMulta(amigosCadastrados);
+                        opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                         Console.Clear();
 
                         break;
