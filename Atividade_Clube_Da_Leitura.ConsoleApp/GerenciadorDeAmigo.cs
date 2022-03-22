@@ -129,6 +129,26 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                 GerenciadorDeFerramentas.Mensagem("Amigo excluído do cadastro!", ConsoleColor.Green);
             }
 
+            public static void VisualizarAmigos(ref Amigo[] amigosCadastrados)
+            {
+                GerenciadorDeFerramentas.Mensagem("Amigos cadastrados: ", ConsoleColor.Yellow);
+
+                for (int i = 0; i < amigosCadastrados.Length; i++)
+                {
+                    if (amigosCadastrados[i] != null)
+                    {
+                        Console.WriteLine("Nome do amigo: " + amigosCadastrados[i].nome);
+                        Console.WriteLine("Nome do responsável: " + amigosCadastrados[i].nomeResponsavel);
+                        Console.WriteLine("Telefone do amigo: " + amigosCadastrados[i].telefone);
+                        Console.WriteLine("Endereço do amigo: " + amigosCadastrados[i].endereço);
+
+                        Console.WriteLine();
+
+                    }
+
+                }
+            }
+
         }
 
     }

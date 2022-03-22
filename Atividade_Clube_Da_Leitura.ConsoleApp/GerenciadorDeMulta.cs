@@ -26,6 +26,21 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                     }
                 }
             }
+
+            public static void VisualizarAmigosQueTemMulta(Amigo[] amigosCadastrados)
+            {
+                GerenciadorDeFerramentas.Mensagem("Amigos que tem multa: ", ConsoleColor.Yellow);
+
+                for (int i = 0; i < amigosCadastrados.Length; i++)
+                {
+                    if (amigosCadastrados[i] != null && amigosCadastrados[i].temMulta == true)
+                    {
+                        Console.WriteLine(amigosCadastrados[i].nome);
+                        Console.WriteLine();
+                    }
+                }
+            }
+
         }
     }
 }

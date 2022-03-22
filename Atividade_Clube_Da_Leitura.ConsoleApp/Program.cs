@@ -183,42 +183,42 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                         switch (opcaoMenuVisualizar)
                         {
                             case "1":
-                                TelaVisualizar.VisualizarAmigos(ref amigosCadastrados);
+                                GerenciadorDeAmigo.VisualizarAmigos(ref amigosCadastrados);
                                 opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "2":
-                                TelaVisualizar.VisualizarRevistas(ref revistasCadastradas);
+                                GerenciadorDeRevista.VisualizarRevistas(ref revistasCadastradas);
                                 opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "3":
-                                TelaVisualizar.VisualizarTodosEmprestimos(emprestimosRealizados);
+                                GerenciadorDeEmprestimo.VisualizarTodosEmprestimos(emprestimosRealizados);
                                 opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "4":
-                                TelaVisualizar.VisualizarEmprestimoDoMes(emprestimosRealizados);
+                                GerenciadorDeEmprestimo.VisualizarEmprestimoDoMes(emprestimosRealizados);
                                 opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "5":
-                                TelaVisualizar.VisualizarEmprestimosEmAberto(emprestimosRealizados);
+                                GerenciadorDeEmprestimo.VisualizarEmprestimosEmAberto(emprestimosRealizados);
                                 opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 
                                 break;
 
                             case "6":
-                                TelaVisualizar.VisualizarAmigosQueTemMulta(amigosCadastrados);
+                                GerenciadorDeMulta.VisualizarAmigosQueTemMulta(amigosCadastrados);
                                 opcaoMenuPrincipal = GerenciadorDeMenu.MenuPrincipal();
                                 Console.Clear();
 

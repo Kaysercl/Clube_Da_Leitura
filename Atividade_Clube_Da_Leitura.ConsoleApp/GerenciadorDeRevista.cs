@@ -176,6 +176,25 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                 GerenciadorDeFerramentas.Mensagem("Revista excluída do cadastro!", ConsoleColor.Green);
             }
 
+            public static void VisualizarRevistas(ref Revista[] revistasCadastradas)
+            {
+                GerenciadorDeFerramentas.Mensagem("Revistas cadastradas: ", ConsoleColor.Yellow);
+
+                for (int i = 0; i < revistasCadastradas.Length; i++)
+                {
+                    if (revistasCadastradas[i] != null)
+                    {
+                        Console.WriteLine("Id da revista: " + revistasCadastradas[i].id);
+                        Console.WriteLine("Tipo da coleção: " + revistasCadastradas[i].tipoColecao);
+                        Console.WriteLine("Edição: " + revistasCadastradas[i].numeroEdicao);
+                        Console.WriteLine("Ano: " + revistasCadastradas[i].ano);
+                        Console.WriteLine("Caixa: " + revistasCadastradas[i].caixa.numero);
+                    }
+
+                    Console.WriteLine();
+                }
+            }
+
         }
     }
 }

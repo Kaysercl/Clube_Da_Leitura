@@ -171,6 +171,112 @@ namespace Atividade_Clube_Da_Leitura.ConsoleApp
                 GerenciadorDeFerramentas.Mensagem("Empréstimo finalizado!", ConsoleColor.Green);
             }
 
+            public static void VisualizarEmprestimosEmAberto(Emprestimo[] emprestimosRealizados)
+            {
+                GerenciadorDeFerramentas.Mensagem("Empréstimos em aberto: ", ConsoleColor.Yellow);
+
+                for (int i = 0; i < emprestimosRealizados.Length; i++)
+                {
+                    if (emprestimosRealizados[i] == null)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if (emprestimosRealizados[i].dataDevolucao >= DateTime.Today)
+                        {
+                            Console.WriteLine("Nome do amigo: " + emprestimosRealizados[i].amigo.nome);
+                            Console.WriteLine("Nome do responsável: " + emprestimosRealizados[i].amigo.nomeResponsavel);
+                            Console.WriteLine("Telefone do amigo: " + emprestimosRealizados[i].amigo.telefone);
+                            Console.WriteLine("Endereço do amigo: " + emprestimosRealizados[i].amigo.endereço);
+                            Console.WriteLine("Tipo de coleção da revista: " + emprestimosRealizados[i].revista.tipoColecao);
+                            Console.WriteLine("Número de edição da revista: " + emprestimosRealizados[i].revista.numeroEdicao);
+                            Console.WriteLine("Ano da revista: " + emprestimosRealizados[i].revista.ano);
+                            Console.WriteLine("Número da caixa da revista: " + emprestimosRealizados[i].revista.caixa.numero);
+                            Console.WriteLine("Data do empréstimo: " + emprestimosRealizados[i].dataEmprestimo);
+                            Console.WriteLine("Data de devolução: " + emprestimosRealizados[i].dataDevolucao);
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine("________________________________________________");
+                        Console.WriteLine();
+
+                    }
+                }
+            }
+
+            public static void VisualizarEmprestimoDoMes(Emprestimo[] emprestimosRealizados)
+            {
+                Console.Write("Digite o mês: ");
+                int mes = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Empréstimos do mês " + mes + ":");
+                Console.ResetColor();
+                Console.WriteLine();
+
+                for (int i = 0; i < emprestimosRealizados.Length; i++)
+                {
+                    if (emprestimosRealizados[i] == null)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if (emprestimosRealizados[i].dataEmprestimo.Month == mes)
+                        {
+                            Console.WriteLine("Nome do amigo: " + emprestimosRealizados[i].amigo.nome);
+                            Console.WriteLine("Nome do responsável: " + emprestimosRealizados[i].amigo.nomeResponsavel);
+                            Console.WriteLine("Telefone do amigo: " + emprestimosRealizados[i].amigo.telefone);
+                            Console.WriteLine("Endereço do amigo: " + emprestimosRealizados[i].amigo.endereço);
+                            Console.WriteLine("Tipo de coleção da revista: " + emprestimosRealizados[i].revista.tipoColecao);
+                            Console.WriteLine("Número de edição da revista: " + emprestimosRealizados[i].revista.numeroEdicao);
+                            Console.WriteLine("Ano da revista: " + emprestimosRealizados[i].revista.ano);
+                            Console.WriteLine("Número da caixa da revista: " + emprestimosRealizados[i].revista.caixa.numero);
+                            Console.WriteLine("Data do empréstimo: " + emprestimosRealizados[i].dataEmprestimo);
+                            Console.WriteLine("Data de devolução: " + emprestimosRealizados[i].dataDevolucao);
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine("________________________________________________");
+                        Console.WriteLine();
+
+                    }
+                }
+            }
+
+            public static void VisualizarTodosEmprestimos(Emprestimo[] emprestimosRealizados)
+            {
+                GerenciadorDeFerramentas.Mensagem("Todos os empréstimos: ", ConsoleColor.Yellow);
+
+                for (int i = 0; i < emprestimosRealizados.Length; i++)
+                {
+                    if (emprestimosRealizados[i] == null)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nome do amigo: " + emprestimosRealizados[i].amigo.nome);
+                        Console.WriteLine("Nome do responsável: " + emprestimosRealizados[i].amigo.nomeResponsavel);
+                        Console.WriteLine("Telefone do amigo: " + emprestimosRealizados[i].amigo.telefone);
+                        Console.WriteLine("Endereço do amigo: " + emprestimosRealizados[i].amigo.endereço);
+                        Console.WriteLine("Tipo de coleção da revista: " + emprestimosRealizados[i].revista.tipoColecao);
+                        Console.WriteLine("Número de edição da revista: " + emprestimosRealizados[i].revista.numeroEdicao);
+                        Console.WriteLine("Ano da revista: " + emprestimosRealizados[i].revista.ano);
+                        Console.WriteLine("Número da caixa da revista: " + emprestimosRealizados[i].revista.caixa.numero);
+                        Console.WriteLine("Data do empréstimo: " + emprestimosRealizados[i].dataEmprestimo);
+                        Console.WriteLine("Data de devolução: " + emprestimosRealizados[i].dataDevolucao);
+
+                        Console.WriteLine();
+                        Console.WriteLine("________________________________________________");
+                        Console.WriteLine();
+
+                    }
+                }
+            }
+
         }
     }
 }
